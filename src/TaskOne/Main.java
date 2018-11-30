@@ -2,9 +2,10 @@ package TaskOne;
 
 import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class Main {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
         Scanner scanner = new Scanner(System.in);
         float a = 0;
         float b = 0;

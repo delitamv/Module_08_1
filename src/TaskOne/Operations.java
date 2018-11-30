@@ -2,35 +2,31 @@ package TaskOne;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class Operations {
-    public float getResult(OperationFloat operationFloat) throws ExecutionException, InterruptedException {
+    public float getResult(OperationFloat operationFloat) throws InterruptedException, ExecutionException, TimeoutException {
         FutureTask<Float> futureTask = new FutureTask<>(operationFloat);
         Thread thread = new Thread(futureTask);
         System.out.println("Thread started. ");
         thread.start();
         float result = 0;
 
-            result = futureTask.get();
-//            Thread.sleep(2000);
+            result = futureTask.get(2000L, TimeUnit.MILLISECONDS);
 
         System.out.println("Thread finished. ");
         return result;
     }
 
-    public boolean getResult(OperationBoolean operationBoolean) throws ExecutionException, InterruptedException {
+    public boolean getResult(OperationBoolean operationBoolean) throws ExecutionException, InterruptedException, TimeoutException {
         FutureTask<Boolean> futureTask = new FutureTask<>(operationBoolean);
         Thread thread = new Thread(futureTask);
         System.out.println("Thread started. ");
         thread.start();
         boolean result = false;
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
 
-            result = futureTask.get();
+            result = futureTask.get(2000L, TimeUnit.MILLISECONDS);
 
         System.out.println("Thread finished. ");
         return result;
